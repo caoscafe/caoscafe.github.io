@@ -1,92 +1,1262 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Caos Café</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caos Café | San José del Cabo</title>
+  <meta
+    name="description"
+    content="Caos Café es un rincón acogedor en San José del Cabo para reunirse, trabajar, relajarse y disfrutar de buen café, alimentos y postres."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Gloria+Hallelujah&family=Londrina+Solid:wght@300;400;900&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
+    :root {
+      --bg: rgb(245, 244, 238);
+      --text: rgb(52, 52, 52);
+      --olive: rgb(148, 171, 100);
+      --mustard: rgb(203, 154, 65);
+      --terracotta: rgb(168, 86, 65);
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 22px;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f2ee;
-      color: #2c2c2c;
+      font-family: "Atkinson Hyperlegible", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
     }
 
-    header {
-      background: #1f1f1f;
-      color: white;
-      padding: 20px;
-      text-align: center;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    .hero {
-      height: 70vh;
-      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') center/cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .hero h1 {
-      font-size: 3em;
-      background: rgba(0,0,0,0.5);
-      padding: 20px;
-      border-radius: 10px;
+    .container {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
     }
 
     .section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
+      padding: 88px 0;
+    }
+
+    .eyebrow {
+      font-family: "Gloria Hallelujah", cursive;
+      color: var(--terracotta);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-family: "Londrina Solid", cursive;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin: 0 0 18px;
+      font-weight: 400;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      font-size: 1.05rem;
+      color: rgba(52, 52, 52, 0.85);
+      margin: 0;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
     }
 
     .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      margin-top: 20px;
-      background: #6b4f3b;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+      cursor: pointer;
+      border: none;
     }
 
-    footer {
-      background: #1f1f1f;
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--white);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid rgba(52, 52, 52, 0.18);
+      color: var(--text);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(245, 244, 238, 0.78);
+      border-bottom: 1px solid rgba(52, 52, 52, 0.08);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+    }
+
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--olive), var(--mustard));
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      font-family: "Londrina Solid", cursive;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-text strong {
+      font-size: 1rem;
+    }
+
+    .brand-text span {
+      font-size: 0.82rem;
+      opacity: 0.75;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.96rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      opacity: 0.88;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: var(--terracotta);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 36px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-visual {
+      border-radius: 34px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      min-height: 600px;
+      background:
+        radial-gradient(circle at top right, rgba(148, 171, 100, 0.18), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(203, 154, 65, 0.12), transparent 28%),
+        var(--white);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      background: rgba(148, 171, 100, 0.15);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-family: "Londrina Solid", cursive;
+      font-size: clamp(3.2rem, 7vw, 6.4rem);
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      margin: 0 0 18px;
+      font-weight: 400;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 620px;
+      margin: 0;
+      color: rgba(52, 52, 52, 0.86);
+    }
+
+    .hero-note {
+      margin-top: 26px;
+      font-size: 0.98rem;
+      color: rgba(52, 52, 52, 0.72);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 600px;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .floating-card {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-radius: 22px;
+      padding: 18px 18px 16px;
+      max-width: 320px;
+      box-shadow: var(--shadow);
+    }
+
+    .floating-card strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .floating-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: rgba(52, 52, 52, 0.82);
+    }
+
+    .info-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .info-card {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-card h3 {
+      margin: 10px 0 8px;
+      font-size: 1rem;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: rgba(52,52,52,0.78);
+      font-size: 0.95rem;
+    }
+
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(148, 171, 100, 0.16);
+      font-size: 1.2rem;
+    }
+
+    .menu-tabs {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 34px 0 30px;
+    }
+
+    .tab-btn {
+      background: rgba(52,52,52,0.06);
+      color: var(--text);
+      border: none;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--text);
+      color: var(--white);
+    }
+
+    .menu-panel {
+      display: none;
+    }
+
+    .menu-panel.active {
+      display: block;
+      animation: fadeUp 0.35s ease;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .menu-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .menu-card h3 {
+      margin: 0 0 16px;
+      font-family: "Londrina Solid", cursive;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    .menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .menu-item {
+      padding-bottom: 14px;
+      border-bottom: 1px dashed rgba(52,52,52,0.12);
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .menu-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .menu-desc {
+      font-size: 0.93rem;
+      color: rgba(52,52,52,0.76);
+    }
+
+    .products-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .carousel {
+      position: relative;
+      background: var(--white);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.45s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+      position: relative;
+      height: 520px;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-caption {
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      background: rgba(255,255,255,0.92);
+      padding: 14px 16px;
+      border-radius: 18px;
+      max-width: calc(100% - 44px);
+      box-shadow: var(--shadow);
+    }
+
+    .carousel-controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .carousel-btn {
+      border: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--text);
+      color: var(--white);
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .products-copy {
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.76));
+      box-shadow: var(--shadow);
+      border-radius: 30px;
+      padding: 34px;
+    }
+
+    .products-copy ul {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .products-copy li {
+      background: rgba(148, 171, 100, 0.12);
+      border-radius: 18px;
+      padding: 16px 18px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .about-card,
+    .about-image {
+      background: var(--white);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-card {
+      padding: 34px;
+    }
+
+    .about-card p {
+      margin: 0 0 16px;
+      color: rgba(52,52,52,0.84);
+      font-size: 1rem;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 100%;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    .contact-card,
+    .map-card {
+      background: var(--white);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .contact-item {
+      padding: 16px 18px;
+      background: rgba(52,52,52,0.05);
+      border-radius: 18px;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .map-embed {
+      border-radius: 22px;
+      overflow: hidden;
+      min-height: 360px;
+      background: rgba(52,52,52,0.06);
+    }
+
+    .map-embed iframe {
+      width: 100%;
+      height: 360px;
+      border: 0;
+    }
+
+    .footer {
+      padding: 30px 0 50px;
+    }
+
+    .footer-card {
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 30px;
+      padding: 28px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-card p {
+      margin: 0;
+      opacity: 0.86;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1001;
+      background: #25D366;
       color: white;
-      text-align: center;
-      padding: 20px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.32);
+      font-size: 1.35rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .products-layout,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-strip,
+      .menu-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-copy,
+      .hero-visual {
+        min-height: auto;
+      }
+
+      .slide {
+        height: 440px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        min-height: 72px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: 78px;
+        background: rgba(245, 244, 238, 0.98);
+        border: 1px solid rgba(52,52,52,0.08);
+        box-shadow: var(--shadow);
+        border-radius: 22px;
+        padding: 18px;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero-copy {
+        padding: 32px 24px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .info-strip,
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-card {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: none;
+      }
+
+      .slide {
+        height: 360px;
+      }
+
+      .footer-card {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
-
 <body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#inicio">
+        <div class="brand-logo">
+          <!-- Reemplaza este texto por tu logo PNG -->
+          <!-- Ejemplo: <img src="img/logo.png" alt="Logo Caos Café"> -->
+          CC
+        </div>
+        <div class="brand-text">
+          <strong>Caos Café</strong>
+          <span>San José del Cabo</span>
+        </div>
+      </a>
 
-<header>
-  <h2>☕ Caos Café</h2>
-</header>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        Menú
+      </button>
 
-<div class="hero">
-  <h1>Café de especialidad en San José del Cabo</h1>
-</div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#menu">Menú</a>
+        <a href="#bebidas-alimentos">Bebidas y alimentos</a>
+        <a href="#sobre">Sobre nosotros</a>
+        <a href="#visitanos">Visítanos</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="section">
-  <h2>Bienvenido</h2>
-  <p>Un espacio para disfrutar café de especialidad, buena comida y un ambiente relajado.</p>
-  <a class="btn" href="https://maps.google.com" target="_blank">Cómo llegar</a>
-</div>
+  <main>
+    <section class="hero container" id="inicio">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <div class="hero-tag">Japandi · café · reunión · creatividad</div>
+          <h1>
+            Un rincón acogedor en San José del Cabo para reunirse, trabajar y disfrutar de buen café.
+          </h1>
+          <p>
+            Caos es un espacio cómodo, estético y humano para hacer una pausa, platicar, avanzar con tu día y volver por esa sensación de estar justo donde quieres estar.
+          </p>
 
-<div class="section">
-  <h2>Menú</h2>
-  <p>Espresso · Latte · Matcha · Sandwiches · Postres</p>
-</div>
+          <div class="btn-row">
+            <a
+              class="btn btn-primary"
+              href="https://maps.app.goo.gl/ELxwdEVexVzNKW5b9"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Cómo llegar
+            </a>
 
-<footer>
-  <p>© 2026 Caos Café</p>
-</footer>
+            <a
+              class="btn btn-secondary"
+              href="https://wa.me/526242351886"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+          </div>
 
+          <p class="hero-note">
+            Lunes a viernes de 7:00 am a 6:30 pm · sábados de 8:00 am a 6:00 pm
+          </p>
+        </div>
+
+        <div class="hero-visual reveal">
+          <!-- Reemplaza por una foto de tu espacio -->
+          <img
+            src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80"
+            alt="Interior de cafetería"
+          />
+          <div class="floating-card">
+            <strong>Espacio para quedarse</strong>
+            <p>
+              Café, alimentos, postres y una atmósfera pensada para trabajar, socializar o simplemente pasar el rato.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-strip reveal">
+        <div class="info-card">
+          <div class="info-icon">☕</div>
+          <h3>Buen café</h3>
+          <p>Clásicos, especiales y una experiencia cuidada desde la taza hasta el espacio.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">💻</div>
+          <h3>Trabaja cómodo</h3>
+          <p>Un lugar para salir de casa u oficina y sentirte a gusto mientras haces tus actividades.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🍞</div>
+          <h3>Alimentos y postres</h3>
+          <p>Opciones hechas para acompañarte durante el día, desde algo ligero hasta algo antojado.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">✦</div>
+          <h3>Diseño con intención</h3>
+          <p>Una estética japandi con un lado artístico y experimental, cálida pero pulida.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="container">
+        <span class="eyebrow reveal">Nuestro menú</span>
+        <h2 class="section-title reveal">Bebidas, alimentos y algo para volver.</h2>
+        <p class="section-intro reveal">
+          Un menú pensado para acompañar reuniones, trabajo, pausas largas y buenos momentos.
+        </p>
+
+        <div class="menu-tabs reveal">
+          <button class="tab-btn active" data-tab="clasicos">Clásicos</button>
+          <button class="tab-btn" data-tab="especiales">Especiales</button>
+          <button class="tab-btn" data-tab="comida">Comida</button>
+          <button class="tab-btn" data-tab="postres">Postres</button>
+          <button class="tab-btn" data-tab="merch">Merch</button>
+        </div>
+
+        <div class="menu-panel active" id="clasicos">
+          <div class="menu-grid">
+            <div class="menu-card">
+              <h3>Clásicos</h3>
+              <div class="menu-list">
+                <div class="menu-item"><div class="menu-topline"><span>Espresso Doble</span><span>$50</span></div></div>
+                <div class="menu-item"><div class="menu-topline"><span>Americano</span><span>$60</span></div></div>
+                <div class="menu-item"><div class="menu-topline"><span>Cortado</span><span>$65</span></div></div>
+                <div class="menu-item"><div class="menu-topline"><span>Flat White</span><span>$65</span></div></div>
+              </div>
+            </div>
+            <div class="menu-card">
+              <h3>Más café</h3>
+              <div class="menu-list">
+                <div class="menu-item"><div class="menu-topline"><span>Capuccino</span><span>$70</span></div></div>
+                <div class="menu-item"><div class="menu-topline"><span>Latte</span><span>$75</span></div></div>
+                <div class="menu-item"><div class="menu-topline"><span>Moccha</span><span>$90</span></div></div>
+                <div class="menu-item"><div class="menu-topline"><span>Cold Brew</span><span>$80</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="especiales">
+          <div class="menu-grid">
+            <div class="menu-card">
+              <h3>Especiales</h3>
+              <div class="menu-list">
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Escandaloso</span><span>$95</span></div>
+                  <div class="menu-desc">Latte shake con miel y leche de avena. Miel de abeja, agave o maple.</div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Matcha Latte</span><span>$95</span></div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Hojicha Latte</span><span>$95</span></div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Frappé</span><span>$105</span></div>
+                  <div class="menu-desc">Incluye sabor a elegir.</div>
+                </div>
+              </div>
+            </div>
+            <div class="menu-card">
+              <h3>También</h3>
+              <div class="menu-list">
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Dirty Chai</span><span>$95</span></div>
+                  <div class="menu-desc">Especias y vainilla.</div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Té Matcha</span><span>$75</span></div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Cold Brew Tonic</span><span>$90</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="comida">
+          <div class="menu-grid">
+            <div class="menu-card">
+              <h3>Sandwiches y toast</h3>
+              <div class="menu-list">
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Sandwich Caos</span><span>$185</span></div>
+                  <div class="menu-desc">Masa madre, jamón de pavo, mozarella, pesto, tomate cherry y arugula.</div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Sandwich Lorenz</span><span>$210</span></div>
+                  <div class="menu-desc">Focaccia, prosciutto, mozarella, pesto, tomate deshidratado y arugula.</div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Toast Sprott</span><span>$150</span></div>
+                  <div class="menu-desc">Aguacate, hummus, tomate cherry, cebolla curtida, arugula y salsa macha.</div>
+                </div>
+              </div>
+            </div>
+            <div class="menu-card">
+              <h3>Extras</h3>
+              <div class="menu-list">
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Huevo</span><span>+$20</span></div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Prosciutto</span><span>+$40</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="postres">
+          <div class="menu-grid">
+            <div class="menu-card">
+              <h3>Postres</h3>
+              <div class="menu-list">
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Galletas Betty</span><span>$65</span></div>
+                  <div class="menu-desc">Galleta de chispas de chocolate, receta de la abuela Betty.</div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Bolitas de Nuez</span><span>1 x $15 / 3 x $40</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="menu-card">
+              <h3>Para acompañar</h3>
+              <div class="menu-list">
+                <div class="menu-item">
+                  <div class="menu-desc">
+                    Tus postres favoritos junto a café de especialidad, matcha o algo frío para tomarte el tiempo con calma.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="merch">
+          <div class="menu-grid">
+            <div class="menu-card">
+              <h3>Merch</h3>
+              <div class="menu-list">
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Tazas</span><span>Próximamente</span></div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Arte</span><span>Próximamente</span></div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-topline"><span>Gorras</span><span>Próximamente</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="menu-card">
+              <h3>Espacio para crecer</h3>
+              <div class="menu-list">
+                <div class="menu-item">
+                  <div class="menu-desc">
+                    Aquí puedes mostrar piezas especiales, artículos del café y colaboraciones futuras.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bebidas-alimentos">
+      <div class="container products-layout">
+        <div class="reveal">
+          <span class="eyebrow">Lo que se ve y se antoja</span>
+          <h2 class="section-title">Bebidas, alimentos y detalles de la casa.</h2>
+
+          <div class="carousel" aria-label="Carrusel de imágenes de productos">
+            <div class="carousel-track" id="carouselTrack">
+              <div class="slide">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80" alt="Bebida de café" />
+                <div class="slide-caption">
+                  <strong>Bebidas</strong>
+                  <div>Café de especialidad, matcha, hojicha y bebidas para cada ritmo del día.</div>
+                </div>
+              </div>
+              <div class="slide">
+                <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1200&q=80" alt="Alimentos de cafetería" />
+                <div class="slide-caption">
+                  <strong>Alimentos</strong>
+                  <div>Sandwiches, toast y opciones hechas para acompañar tu pausa o jornada.</div>
+                </div>
+              </div>
+              <div class="slide">
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80" alt="Postres" />
+                <div class="slide-caption">
+                  <strong>Postres</strong>
+                  <div>Pequeños antojos para volver al café una y otra vez.</div>
+                </div>
+              </div>
+              <div class="slide">
+                <img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80" alt="Merch y detalles del café" />
+                <div class="slide-caption">
+                  <strong>Merch</strong>
+                  <div>Tazas, arte, gorras y objetos que extienden el universo de Caos.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-controls">
+            <button class="carousel-btn" id="prevBtn" aria-label="Imagen anterior">←</button>
+            <button class="carousel-btn" id="nextBtn" aria-label="Siguiente imagen">→</button>
+          </div>
+        </div>
+
+        <div class="products-copy reveal">
+          <span class="eyebrow">Tres mundos</span>
+          <p class="section-intro">
+            Puedes dividir visualmente esta parte del sitio en tres categorías para destacar lo que ofreces y luego reemplazar cada imagen por tus fotos reales.
+          </p>
+          <ul>
+            <li><strong>Bebidas</strong><br />Café, especiales y bebidas de temporada o firma.</li>
+            <li><strong>Alimentos</strong><br />Sandwiches, toast, postres y acompañamientos.</li>
+            <li><strong>Merch</strong><br />Tazas, arte, gorras y piezas que le den identidad al espacio.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container">
+        <span class="eyebrow reveal">Sobre nosotros</span>
+        <h2 class="section-title reveal">En el desorden también existe el orden.</h2>
+
+        <div class="about-grid">
+          <div class="about-card reveal">
+            <p>
+              Caos nace de la necesidad de un lugar de reunión donde se pueda ir a pasar el rato, trabajar sin tener que estar en casa o en la oficina, y encontrar un espacio tranquilo para relajarse y disfrutar de un buen café.
+            </p>
+            <p>
+              El nombre <strong>CAOS</strong> viene de la idea de que lo que aparenta ser negativo no siempre lo es. En el desorden existe el orden, y ser diferente no es malo: es parte de lo que nos vuelve mejores, únicos y humanos.
+            </p>
+            <p>
+              Creemos que el café no es solo una bebida, sino una herramienta o una excusa para reunir a la gente, hacer compañía y acompañar las actividades del día a día. Cuidamos la calidad del café y de nuestros alimentos para ofrecer la mejor experiencia posible.
+            </p>
+            <p>
+              El espacio está curado para sentirse bello, cómodo y vivo: un lugar en el que nosotros mismos quisiéramos pasar el rato y al que dan ganas de volver.
+            </p>
+          </div>
+
+          <div class="about-image reveal">
+            <!-- Reemplaza por foto real del espacio o detalle interior -->
+            <img
+              src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=80"
+              alt="Espacio interior del café"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visitanos">
+      <div class="container">
+        <span class="eyebrow reveal">Visítanos</span>
+        <h2 class="section-title reveal">Pasa por café, quédate un rato.</h2>
+
+        <div class="contact-grid">
+          <div class="contact-card reveal">
+            <p class="section-intro">
+              Estamos en Plaza del Cabo, en San José del Cabo. Ven a trabajar, reunirte o simplemente bajar el ritmo.
+            </p>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <strong>Dirección</strong>
+                Blvd Mauricio Castro, Pl. del Cabo 1952-Local 9, Campo de Golf Fonatur, 23405 San José del Cabo, B.C.S.
+              </div>
+              <div class="contact-item">
+                <strong>Horario</strong>
+                Lunes a viernes de 7:00 am a 6:30 pm<br />
+                Sábados de 8:00 am a 6:00 pm
+              </div>
+              <div class="contact-item">
+                <strong>Teléfono / WhatsApp</strong>
+                <a href="tel:+526242351886">624 235 1886</a>
+              </div>
+              <div class="contact-item">
+                <strong>Instagram</strong>
+                <a href="https://www.instagram.com/caoscafe.cabo/" target="_blank" rel="noopener noreferrer">
+                  @caoscafe.cabo
+                </a>
+              </div>
+            </div>
+
+            <div class="btn-row">
+              <a
+                class="btn btn-primary"
+                href="https://maps.app.goo.gl/ELxwdEVexVzNKW5b9"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Cómo llegar
+              </a>
+              <a
+                class="btn btn-secondary"
+                href="https://wa.me/526242351886"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Escríbenos
+              </a>
+            </div>
+          </div>
+
+          <div class="map-card reveal">
+            <div class="map-embed">
+              <iframe
+                title="Mapa de Caos Café"
+                src="https://www.google.com/maps?q=Blvd%20Mauricio%20Castro,%20Pl.%20del%20Cabo%201952-Local%209,%20Campo%20de%20Golf%20Fonatur,%2023405%20San%20Jos%C3%A9%20del%20Cabo,%20B.C.S.&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-card">
+        <div>
+          <strong>Caos Café</strong>
+          <p>Buen café, buena compañía y un lugar para quedarse.</p>
+        </div>
+        <div>
+          <p>© 2026 Caos Café · San José del Cabo</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/526242351886"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Abrir WhatsApp"
+  >
+    ✆
+  </a>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle?.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    navLinks?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => navLinks.classList.remove("open"));
+    });
+
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const menuPanels = document.querySelectorAll(".menu-panel");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.tab;
+
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        menuPanels.forEach((panel) => panel.classList.remove("active"));
+
+        button.classList.add("active");
+        document.getElementById(target).classList.add("active");
+      });
+    });
+
+    const track = document.getElementById("carouselTrack");
+    const slides = document.querySelectorAll(".slide");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    let currentSlide = 0;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    nextBtn?.addEventListener("click", () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateCarousel();
+    });
+
+    prevBtn?.addEventListener("click", () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateCarousel();
+    }, 5000);
+
+    const revealItems = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.14 }
+    );
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+  </script>
 </body>
 </html>
