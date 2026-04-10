@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solicitar factura — Café Caos</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+    .brand {
+      font-size: 22px;
+      font-weight: 800;
+      color: #2d6a4f;
+      margin-bottom: 2px;
+    }
+    .brand-sub {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-bottom: 28px;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: #fff;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      margin: 16px 0 5px;
+    }
+    label:first-of-type { margin-top: 0; }
+    input, select {
+      width: 100%;
+      padding: 11px 13px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #111827;
+      background: #fff;
+      -webkit-appearance: none;
+      appearance: none;
+      outline: none;
+      transition: border-color .15s;
+    }
+    input:focus, select:focus { border-color: #2d6a4f; }
+    .hint { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+    .rules {
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #166534;
+      line-height: 1.7;
+    }
+    .rules strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .notice {
+      background: #fef9c3;
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-size: 13px;
+      color: #854d0e;
+      margin-bottom: 16px;
+      line-height: 1.5;
+      display: none;
+    }
+    .closed-msg {
+      background: #fef2f2;
+      border: 1.5px solid #fca5a5;
+      border-radius: 12px;
+      padding: 28px 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #991b1b;
+      line-height: 1.6;
+      display: none;
+    }
+    .closed-msg strong { display: block; font-size: 20px; font-weight: 800; margin-bottom: 10px; }
+    .error-box {
+      background: #fef2f2;
+      border: 1.5px solid #fca5a5;
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-size: 14px;
+      color: #991b1b;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .success-box {
+      text-align: center;
+      padding: 48px 16px;
+      display: none;
+    }
+    .success-box .icon { font-size: 64px; margin-bottom: 16px; }
+    .success-box h2 { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+    .success-box p { font-size: 15px; color: #6b7280; line-height: 1.6; }
+    #submit-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: #2d6a4f;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: opacity .15s;
+    }
+    #submit-btn:disabled { opacity: .6; cursor: default; }
+    #loading { text-align: center; padding: 60px 0; color: #9ca3af; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">☕ Café Caos</div>
+    <div class="brand-sub">Solicitud de factura (CFDI)</div>
+
+    <div id="loading">Cargando…</div>
+
+    <div id="closed-msg" class="closed-msg">
+      <strong>Formulario cerrado hoy</strong>
+      El último día del mes el formulario está cerrado para el procesamiento de cierres fiscales.<br><br>
+      Si realizaste una compra este mes y necesitas factura, comunícate directamente con nosotros.
+    </div>
+
+    <div id="form-section" style="display:none">
+      <h1>Solicitar factura</h1>
+
+      <div id="notice" class="notice"></div>
+      <div id="rules" class="rules"></div>
+      <div id="error-box" class="error-box"></div>
+
+      <div id="success-box" class="success-box">
+        <div class="icon">✅</div>
+        <h2>¡Solicitud enviada!</h2>
+        <p id="success-msg"></p>
+      </div>
+
+      <form id="cfdi-form">
+        <div class="card">
+          <p class="section-title">Datos de tu ticket</p>
+
+          <label for="ticket_number">Número de ticket</label>
+          <input type="number" id="ticket_number" name="ticket_number" min="1"
+                 placeholder="Ej. 42" required />
+          <div class="hint">Número impreso en tu recibo o que te indicó el barista.</div>
+
+          <label for="amount">Importe pagado (sin propina)</label>
+          <input type="text" id="amount" name="amount" inputmode="decimal"
+                 placeholder="Ej. 150.00" required />
+          <div class="hint">El total de tu cuenta antes de propina, en pesos MXN.</div>
+        </div>
+
+        <div class="card">
+          <p class="section-title">Datos fiscales</p>
+
+          <label for="rfc">RFC</label>
+          <input type="text" id="rfc" name="rfc" maxlength="13"
+                 placeholder="XAXX010101000" required
+                 oninput="this.value=this.value.toUpperCase()" />
+          <div class="hint">12 caracteres (empresa) o 13 (persona física)</div>
+
+          <label for="razon_social">Razón social o nombre</label>
+          <input type="text" id="razon_social" name="razon_social"
+                 placeholder="MI EMPRESA SA DE CV" required />
+
+          <label for="uso_cfdi">Uso de CFDI</label>
+          <select id="uso_cfdi" name="uso_cfdi" required>
+            <option value="">Selecciona…</option>
+            <option value="G01">G01 — Adquisición de mercancías</option>
+            <option value="G03">G03 — Gastos en general</option>
+            <option value="I01">I01 — Construcciones</option>
+            <option value="I04">I04 — Equipo de cómputo y accesorios</option>
+            <option value="D01">D01 — Honorarios médicos, dentales y gastos hospitalarios</option>
+            <option value="D10">D10 — Pagos por servicios educativos</option>
+            <option value="S01">S01 — Sin efectos fiscales</option>
+            <option value="CP01">CP01 — Pagos</option>
+          </select>
+
+          <label for="regimen_fiscal">Régimen fiscal</label>
+          <select id="regimen_fiscal" name="regimen_fiscal" required>
+            <option value="">Selecciona…</option>
+            <option value="601">601 — General de Ley Personas Morales</option>
+            <option value="603">603 — Personas Morales con Fines no Lucrativos</option>
+            <option value="605">605 — Sueldos y Salarios</option>
+            <option value="606">606 — Arrendamiento</option>
+            <option value="608">608 — Demás ingresos</option>
+            <option value="612">612 — Personas Físicas con Actividades Empresariales</option>
+            <option value="616">616 — Sin obligaciones fiscales</option>
+            <option value="621">621 — Incorporación Fiscal</option>
+            <option value="625">625 — Régimen de Plataformas Tecnológicas</option>
+            <option value="626">626 — Régimen Simplificado de Confianza (RESICO)</option>
+          </select>
+
+          <label for="forma_pago">Forma de pago</label>
+          <select id="forma_pago" name="forma_pago" required>
+            <option value="">Selecciona…</option>
+            <option value="01">01 — Efectivo</option>
+            <option value="03">03 — Transferencia electrónica</option>
+            <option value="04">04 — Tarjeta de crédito</option>
+            <option value="28">28 — Tarjeta de débito</option>
+            <option value="99">99 — Por definir</option>
+          </select>
+
+          <label for="cfdi_email">Correo electrónico</label>
+          <input type="email" id="cfdi_email" name="cfdi_email"
+                 placeholder="facturacion@empresa.com" required />
+          <div class="hint">Tu CFDI será enviado a este correo.</div>
+
+          <label for="telefono">Teléfono de contacto (opcional)</label>
+          <input type="tel" id="telefono" name="telefono"
+                 placeholder="55 1234 5678" inputmode="tel" />
+          <div class="hint">Por si necesitamos contactarte sobre tu factura.</div>
+        </div>
+
+        <button type="submit" id="submit-btn">Enviar solicitud</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    var API = 'https://xtwfopmvxjaavcxanzka.supabase.co/functions/v1/cfdi-form';
+
+    function rulesHtml(d) {
+      return '<strong>ℹ️ Reglas de facturación</strong>' +
+        'Solo puedes solicitar factura de compras del <strong>mes en curso (' + d.monthName + ')</strong>.<br>' +
+        'El formulario cierra el último día del mes para el procesamiento de cierres fiscales.<br>' +
+        'Tienes hasta el <strong>' + d.deadline + '</strong> para solicitar tu factura.';
+    }
+
+    fetch(API)
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        document.getElementById('loading').style.display = 'none';
+        if (d.closedToday) {
+          document.getElementById('closed-msg').style.display = 'block';
+        } else {
+          document.getElementById('rules').innerHTML = rulesHtml(d);
+          if (d.daysLeft <= 3) {
+            var n = document.getElementById('notice');
+            n.innerHTML = '⚠️ Quedan ' + d.daysLeft + ' día' + (d.daysLeft !== 1 ? 's' : '') +
+              ' para solicitar tu factura del mes.';
+            n.style.display = 'block';
+          }
+          document.getElementById('form-section').style.display = 'block';
+        }
+      })
+      .catch(function() {
+        document.getElementById('loading').textContent =
+          'Error al cargar. Recarga la página e intenta de nuevo.';
+      });
+
+    document.getElementById('cfdi-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submit-btn');
+      var errBox = document.getElementById('error-box');
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      errBox.style.display = 'none';
+
+      fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ticket_number:  document.getElementById('ticket_number').value,
+          amount:         document.getElementById('amount').value,
+          rfc:            document.getElementById('rfc').value,
+          razon_social:   document.getElementById('razon_social').value,
+          uso_cfdi:       document.getElementById('uso_cfdi').value,
+          regimen_fiscal: document.getElementById('regimen_fiscal').value,
+          forma_pago:     document.getElementById('forma_pago').value,
+          cfdi_email:     document.getElementById('cfdi_email').value,
+          telefono:       document.getElementById('telefono').value,
+        }),
+      })
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (d.ok) {
+            document.getElementById('cfdi-form').style.display = 'none';
+            document.getElementById('success-msg').textContent = d.message;
+            document.getElementById('success-box').style.display = 'block';
+          } else {
+            errBox.textContent = d.error || 'Error desconocido. Intenta de nuevo.';
+            errBox.style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Enviar solicitud';
+          }
+        })
+        .catch(function() {
+          errBox.textContent = 'Error de conexión. Verifica tu internet e intenta de nuevo.';
+          errBox.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Enviar solicitud';
+        });
+    });
+  </script>
+</body>
+</html>
