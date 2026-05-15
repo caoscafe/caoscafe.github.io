@@ -197,6 +197,13 @@
           <input type="text" id="razon_social" name="razon_social"
                  placeholder="MI EMPRESA SA DE CV" required />
 
+          <label for="codigo_postal">Código postal fiscal</label>
+          <input type="text" id="codigo_postal" name="codigo_postal"
+                 placeholder="06600" maxlength="5" inputmode="numeric"
+                 pattern="\d{5}" required
+                 oninput="this.value=this.value.replace(/\D/g,'')" />
+          <div class="hint">Código postal de tu domicilio fiscal (5 dígitos), tal como aparece en tu constancia del SAT.</div>
+
           <label for="uso_cfdi">Uso de CFDI</label>
           <select id="uso_cfdi" name="uso_cfdi" required>
             <option value="">Selecciona…</option>
@@ -299,6 +306,7 @@
           amount:         document.getElementById('amount').value,
           rfc:            document.getElementById('rfc').value,
           razon_social:   document.getElementById('razon_social').value,
+          codigo_postal:  document.getElementById('codigo_postal').value,
           uso_cfdi:       document.getElementById('uso_cfdi').value,
           regimen_fiscal: document.getElementById('regimen_fiscal').value,
           forma_pago:     document.getElementById('forma_pago').value,
