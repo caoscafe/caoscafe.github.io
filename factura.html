@@ -262,11 +262,24 @@
     var API = 'https://xtwfopmvxjaavcxanzka.supabase.co/functions/v1/cfdi-form';
     var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0d2ZvcG12eGphYXZjeGFuemthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1MTg3NjAsImV4cCI6MjA5MTA5NDc2MH0.tiGEG9G803Sqa0u2cbpKTp9Pu31-LPzOIJ400JDoeXk';
 
+    var MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    function localMonthName() {
+      var now = new Date();
+      return MONTHS[now.getMonth()] + ' ' + now.getFullYear();
+    }
+    function localDeadline() {
+      var now = new Date();
+      var last = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+      return last.getDate() + ' de ' + MONTHS[last.getMonth()];
+    }
+
     function rulesHtml(d) {
+      var mn = d.monthName || localMonthName();
+      var dl = d.deadline   || localDeadline();
       return '<strong>ℹ️ Reglas de facturación</strong>' +
-        'Solo puedes solicitar factura de compras del <strong>mes en curso (' + d.monthName + ')</strong>.<br>' +
+        'Solo puedes solicitar factura de compras del <strong>mes en curso (' + mn + ')</strong>.<br>' +
         'El formulario cierra el último día del mes para el procesamiento de cierres fiscales.<br>' +
-        'Tienes hasta el <strong>' + d.deadline + '</strong> para solicitar tu factura.';
+        'Tienes hasta el <strong>' + dl + '</strong> para solicitar tu factura.';
     }
 
     fetch(API, { headers: { 'apikey': ANON_KEY } })
