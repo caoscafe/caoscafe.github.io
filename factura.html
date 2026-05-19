@@ -328,14 +328,17 @@
           telefono:       document.getElementById('telefono').value,
         }),
       })
-        .then(function(r) { return r.json(); })
-        .then(function(d) {
+        .then(function(r) {
+          return r.json().then(function(d) { return { status: r.status, body: d }; });
+        })
+        .then(function(res) {
+          var d = res.body;
           if (d.ok) {
             document.getElementById('cfdi-form').style.display = 'none';
             document.getElementById('success-msg').textContent = d.message;
             document.getElementById('success-box').style.display = 'block';
           } else {
-            errBox.textContent = d.error || 'Error desconocido. Intenta de nuevo.';
+            errBox.textContent = d.error || d.message || ('Error ' + res.status + '. Intenta de nuevo.');
             errBox.style.display = 'block';
             btn.disabled = false;
             btn.textContent = 'Enviar solicitud';
