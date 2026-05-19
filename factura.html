@@ -260,7 +260,6 @@
 
   <script>
     var API = 'https://xtwfopmvxjaavcxanzka.supabase.co/functions/v1/cfdi-form';
-    var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0d2ZvcG12eGphYXZjeGFuemthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1MTg3NjAsImV4cCI6MjA5MTA5NDc2MH0.tiGEG9G803Sqa0u2cbpKTp9Pu31-LPzOIJ400JDoeXk';
 
     var MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
     function localMonthName() {
@@ -282,7 +281,7 @@
         'Tienes hasta el <strong>' + dl + '</strong> para solicitar tu factura.';
     }
 
-    fetch(API, { headers: { 'apikey': ANON_KEY } })
+    fetch(API)
       .then(function(r) { return r.json(); })
       .then(function(d) {
         document.getElementById('loading').style.display = 'none';
@@ -314,7 +313,7 @@
 
       fetch(API, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'apikey': ANON_KEY },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ticket_number:  document.getElementById('ticket_number').value,
           amount:         document.getElementById('amount').value,
