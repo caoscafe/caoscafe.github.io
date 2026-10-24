@@ -23,7 +23,7 @@
     <div class="container nav">
       <a class="brand" href="#inicio">
         <div class="brand-logo">
-          <img src="img/logo.png" alt="Logo Caos Café" />
+          <img src="img/logo.png" alt="Logo Caos Café" data-i18n-attr="alt:brand.logoAlt" />
         </div>
         <div class="brand-text">
           <strong>Caos Café</strong>
@@ -31,17 +31,18 @@
         </div>
       </a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-        Menú
-      </button>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="View in English" title="View in English">EN</button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" data-i18n="nav.toggle" data-i18n-attr="aria-label:nav.toggleLabel">Menú</button>
+      </div>
 
       <nav class="nav-links" id="navLinks">
-        <a href="#inicio">Inicio</a>
-        <a href="#menu">Menú</a>
-        <a href="#bebidas-alimentos">Bebidas y alimentos</a>
-        <a href="#sobre">Sobre nosotros</a>
-        <a href="#visitanos">Visítanos</a>
-        <a href="factura">Facturación</a>
+        <a href="#inicio" data-i18n="nav.home">Inicio</a>
+        <a href="#menu" data-i18n="nav.menu">Menú</a>
+        <a href="#bebidas-alimentos" data-i18n="nav.products">Bebidas y alimentos</a>
+        <a href="#sobre" data-i18n="nav.about">Sobre nosotros</a>
+        <a href="#visitanos" data-i18n="nav.visit">Visítanos</a>
+        <a href="factura" data-i18n="nav.invoice">Facturación</a>
       </nav>
     </div>
   </header>
@@ -50,14 +51,9 @@
     <section class="hero container" id="inicio">
       <div class="hero-grid">
         <div class="hero-copy reveal">
-          <div class="hero-tag">Tu café en San José del Cabo</div>
-          <h1>
-            El lugar para reunirse, trabajar y disfrutar de buen café
-          </h1>
-          <p>
-            Caos es un espacio cómodo, estético y humano para hacer una pausa, platicar,
-            avanzar con tu día y volver por esa sensación de estar justo donde quieres estar.
-          </p>
+          <div class="hero-tag" data-i18n="hero.tag">Tu café en San José del Cabo</div>
+          <h1 data-i18n="hero.title">El lugar para reunirse, trabajar y disfrutar de buen café</h1>
+          <p data-i18n="hero.text">Caos es un espacio cómodo, estético y humano para hacer una pausa, platicar, avanzar con tu día y volver por esa sensación de estar justo donde quieres estar.</p>
 
           <div class="btn-row">
             <a
@@ -65,9 +61,8 @@
               href="https://maps.app.goo.gl/ELxwdEVexVzNKW5b9"
               target="_blank"
               rel="noopener noreferrer"
-            >
-              Cómo llegar
-            </a>
+              data-i18n="hero.directions"
+            >Cómo llegar</a>
 
             <a
               class="btn btn-secondary"
@@ -79,19 +74,14 @@
             </a>
           </div>
 
-          <p class="hero-note">
-            Lunes a viernes de 7:00 am a 6:30 pm · sábados de 8:00 am a 6:00 pm
-          </p>
+          <p class="hero-note" data-i18n="hero.hours">Lunes a viernes de 7:00 am a 6:30 pm · sábados de 8:00 am a 6:00 pm</p>
         </div>
 
         <div class="hero-visual reveal">
-          <img src="img/hero.jpeg" alt="Interior de Caos Café" />
+          <img src="img/hero.jpeg" alt="Interior de Caos Café" data-i18n-attr="alt:hero.imgAlt" />
           <div class="floating-card">
-            <strong>Espacio para quedarse</strong>
-            <p>
-              Café, alimentos, postres y una atmósfera pensada para trabajar,
-              socializar o simplemente pasar el rato.
-            </p>
+            <strong data-i18n="hero.cardTitle">Espacio para quedarse</strong>
+            <p data-i18n="hero.cardText">Café, alimentos, postres y una atmósfera pensada para trabajar, socializar o simplemente pasar el rato.</p>
           </div>
         </div>
       </div>
@@ -99,250 +89,91 @@
       <div class="info-strip reveal">
         <div class="info-card">
           <div class="info-icon">☕</div>
-          <h3>Buen café</h3>
-          <p>Clásicos, especiales y una experiencia cuidada desde la taza hasta el espacio.</p>
+          <h3 data-i18n="info.coffeeTitle">Buen café</h3>
+          <p data-i18n="info.coffeeText">Clásicos, especiales y una experiencia cuidada desde la taza hasta el espacio.</p>
         </div>
         <div class="info-card">
           <div class="info-icon">💻</div>
-          <h3>Trabaja cómodo</h3>
-          <p>Un lugar para salir de casa u oficina y sentirte a gusto mientras haces tus actividades.</p>
+          <h3 data-i18n="info.workTitle">Trabaja cómodo</h3>
+          <p data-i18n="info.workText">Un lugar para salir de casa u oficina y sentirte a gusto mientras haces tus actividades.</p>
         </div>
         <div class="info-card">
           <div class="info-icon">🍞</div>
-          <h3>Alimentos y postres</h3>
-          <p>Opciones hechas para acompañarte durante el día, desde algo ligero hasta algo antojado.</p>
+          <h3 data-i18n="info.foodTitle">Alimentos y postres</h3>
+          <p data-i18n="info.foodText">Opciones hechas para acompañarte durante el día, desde algo ligero hasta algo antojado.</p>
         </div>
         <div class="info-card">
           <div class="info-icon">✦</div>
-          <h3>Diseño con intención</h3>
-          <p>Una estética japandi con un lado artístico y experimental, cálida pero pulida.</p>
+          <h3 data-i18n="info.designTitle">Diseño con intención</h3>
+          <p data-i18n="info.designText">Una estética japandi con un lado artístico y experimental, cálida pero pulida.</p>
         </div>
       </div>
     </section>
 
     <section class="section" id="menu">
       <div class="container">
-        <span class="eyebrow reveal">Nuestro menú</span>
-        <h2 class="section-title reveal">Bebidas, alimentos y algo para volver.</h2>
-        <p class="section-intro reveal">
-          Un menú pensado para acompañar reuniones, trabajo, pausas largas y buenos momentos.
-        </p>
+        <span class="eyebrow reveal" data-i18n="menu.eyebrow">Nuestro menú</span>
+        <h2 class="section-title reveal" data-i18n="menu.title">Bebidas, alimentos y algo para volver.</h2>
+        <p class="section-intro reveal" data-i18n="menu.intro">Un menú pensado para acompañar reuniones, trabajo, pausas largas y buenos momentos.</p>
 
-        <div class="menu-tabs reveal">
-          <button class="tab-btn active" data-tab="clasicos">Clásicos</button>
-          <button class="tab-btn" data-tab="especiales">Especiales</button>
-          <button class="tab-btn" data-tab="comida">Comida</button>
-          <button class="tab-btn" data-tab="postres">Postres</button>
-          <button class="tab-btn" data-tab="merch">Merch</button>
-        </div>
-
-        <div class="menu-panel active" id="clasicos">
-          <div class="menu-grid">
-            <div class="menu-card">
-              <h3>Clásicos</h3>
-              <div class="menu-list">
-                <div class="menu-item"><div class="menu-topline"><span>Espresso Doble</span><span>$50</span></div></div>
-                <div class="menu-item"><div class="menu-topline"><span>Americano</span><span>$60</span></div></div>
-                <div class="menu-item"><div class="menu-topline"><span>Cortado</span><span>$65</span></div></div>
-                <div class="menu-item"><div class="menu-topline"><span>Flat White</span><span>$65</span></div></div>
-              </div>
-            </div>
-            <div class="menu-card">
-              <h3>Más café</h3>
-              <div class="menu-list">
-                <div class="menu-item"><div class="menu-topline"><span>Capuccino</span><span>$70</span></div></div>
-                <div class="menu-item"><div class="menu-topline"><span>Latte</span><span>$75</span></div></div>
-                <div class="menu-item"><div class="menu-topline"><span>Moccha</span><span>$90</span></div></div>
-                <div class="menu-item"><div class="menu-topline"><span>Cold Brew</span><span>$80</span></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="menu-panel" id="especiales">
-          <div class="menu-grid">
-            <div class="menu-card">
-              <h3>Especiales</h3>
-              <div class="menu-list">
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Escandaloso</span><span>$95</span></div>
-                  <div class="menu-desc">Latte shake con miel y leche de avena. Miel de abeja, agave o maple.</div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Matcha Latte</span><span>$95</span></div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Hojicha Latte</span><span>$95</span></div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Frappé</span><span>$105</span></div>
-                  <div class="menu-desc">Incluye sabor a elegir.</div>
-                </div>
-              </div>
-            </div>
-            <div class="menu-card">
-              <h3>También</h3>
-              <div class="menu-list">
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Dirty Chai</span><span>$95</span></div>
-                  <div class="menu-desc">Especias y vainilla.</div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Té Matcha</span><span>$75</span></div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Cold Brew Tonic</span><span>$90</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="menu-panel" id="comida">
-          <div class="menu-grid">
-            <div class="menu-card">
-              <h3>Sandwiches y toast</h3>
-              <div class="menu-list">
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Sandwich Caos</span><span>$185</span></div>
-                  <div class="menu-desc">Masa madre, jamón de pavo, mozarella, pesto, tomate cherry y arugula.</div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Sandwich Lorenz</span><span>$210</span></div>
-                  <div class="menu-desc">Focaccia, prosciutto, mozarella, pesto, tomate deshidratado y arugula.</div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Toast Sprott</span><span>$150</span></div>
-                  <div class="menu-desc">Aguacate, hummus, tomate cherry, cebolla curtida, arugula y salsa macha.</div>
-                </div>
-              </div>
-            </div>
-            <div class="menu-card">
-              <h3>Extras</h3>
-              <div class="menu-list">
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Huevo</span><span>+$20</span></div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Prosciutto</span><span>+$40</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="menu-panel" id="postres">
-          <div class="menu-grid">
-            <div class="menu-card">
-              <h3>Postres</h3>
-              <div class="menu-list">
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Galletas Betty</span><span>$65</span></div>
-                  <div class="menu-desc">Galleta de chispas de chocolate, receta de la abuela Betty.</div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Bolitas de Nuez</span><span>1 x $15 / 3 x $40</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="menu-card">
-              <h3>Para acompañar</h3>
-              <div class="menu-list">
-                <div class="menu-item">
-                  <div class="menu-desc">
-                    Tus postres favoritos junto a café de especialidad, matcha o algo frío para tomarte el tiempo con calma.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="menu-panel" id="merch">
-          <div class="menu-grid">
-            <div class="menu-card">
-              <h3>Merch</h3>
-              <div class="menu-list">
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Tazas</span><span>Próximamente</span></div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Arte</span><span>Próximamente</span></div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-topline"><span>Gorras</span><span>Próximamente</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="menu-card">
-              <h3>Y más cositas...</h3>
-              <div class="menu-list">
-                <div class="menu-item">
-                  <div class="menu-desc">
-                    Estamos trabajando en traer cosas nuevas para ustedes.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="menu-tabs reveal" id="menuTabs"></div>
+        <div id="menuPanels"></div>
+        <p class="menu-note" data-i18n="menu.prices">Precios en pesos mexicanos (MXN).</p>
       </div>
     </section>
 
     <section class="section" id="bebidas-alimentos">
       <div class="container products-layout">
         <div class="reveal">
-          <span class="eyebrow">Lo que se ve y se antoja</span>
-          <h2 class="section-title">Bebidas, alimentos y detalles de la casa.</h2>
+          <span class="eyebrow" data-i18n="products.eyebrow">Lo que se ve y se antoja</span>
+          <h2 class="section-title" data-i18n="products.title">Bebidas, alimentos y detalles de la casa.</h2>
 
-          <div class="carousel" aria-label="Carrusel de imágenes de productos">
+          <div class="carousel" aria-label="Carrusel de imágenes de productos" data-i18n-attr="aria-label:products.carouselLabel">
             <div class="carousel-track" id="carouselTrack">
               <div class="slide">
-                <img src="img/p1.jpeg" alt="Bebida de café" />
+                <img src="img/p1.jpeg" alt="Bebida de café" data-i18n-attr="alt:products.drinksAlt" />
                 <div class="slide-caption">
-                  <strong>Bebidas</strong>
-                  <div>Café de especialidad, matcha, hojicha y bebidas para cada ritmo del día.</div>
+                  <strong data-i18n="products.drinks">Bebidas</strong>
+                  <div data-i18n="products.drinksText">Café de especialidad, matcha, hojicha y bebidas para cada ritmo del día.</div>
                 </div>
               </div>
               <div class="slide">
-                <img src="img/p6.jpeg" alt="Alimentos de cafetería" />
+                <img src="img/p6.jpeg" alt="Alimentos de cafetería" data-i18n-attr="alt:products.foodAlt" />
                 <div class="slide-caption">
-                  <strong>Alimentos</strong>
-                  <div>Sandwiches, toast y opciones hechas para acompañar tu pausa o jornada.</div>
+                  <strong data-i18n="products.food">Alimentos</strong>
+                  <div data-i18n="products.foodText">Sandwiches, toast y opciones hechas para acompañar tu pausa o jornada.</div>
                 </div>
               </div>
               <div class="slide">
-                <img src="img/p7.jpeg" alt="Postres y espacio del café" />
+                <img src="img/p7.jpeg" alt="Postres y espacio del café" data-i18n-attr="alt:products.dessertsAlt" />
                 <div class="slide-caption">
-                  <strong>Postres</strong>
-                  <div>Pequeños antojos para volver al café una y otra vez.</div>
+                  <strong data-i18n="products.desserts">Postres</strong>
+                  <div data-i18n="products.dessertsText">Pequeños antojos para volver al café una y otra vez.</div>
                 </div>
               </div>
               <div class="slide">
-                <img src="img/m1.jpg" alt="Merch y detalles del café" />
+                <img src="img/m1.jpg" alt="Merch y detalles del café" data-i18n-attr="alt:products.merchAlt" />
                 <div class="slide-caption">
-                  <strong>Merch</strong>
-                  <div>Tazas, arte, gorras y objetos que extienden el universo de Caos.</div>
+                  <strong data-i18n="products.merch">Merch</strong>
+                  <div data-i18n="products.merchText">Tazas, gorras, stickers y detalles que extienden el universo de Caos.</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="carousel-controls">
-            <button class="carousel-btn" id="prevBtn" aria-label="Imagen anterior">←</button>
-            <button class="carousel-btn" id="nextBtn" aria-label="Siguiente imagen">→</button>
+            <button class="carousel-btn" id="prevBtn" aria-label="Imagen anterior" data-i18n-attr="aria-label:products.prev">←</button>
+            <button class="carousel-btn" id="nextBtn" aria-label="Siguiente imagen" data-i18n-attr="aria-label:products.next">→</button>
           </div>
         </div>
 
         <div class="products-copy reveal">
-          <span class="eyebrow">Tres mundos</span>
-          <p class="section-intro">
-            Tenemos de todo para satisfacer tus antojos con recetas caseras y alugunas cosas diferentes que no encontraras en ningun otro lugar
-          </p>
+          <span class="eyebrow" data-i18n="worlds.eyebrow">Tres mundos</span>
+          <p class="section-intro" data-i18n="worlds.intro">Tenemos de todo para satisfacer tus antojos, con recetas caseras y algunas cosas diferentes que no encontrarás en ningún otro lugar.</p>
           <ul>
-            <li><strong>Bebidas</strong><br />Café, matcha, bebidas de temporada y alguna que otra bebida unica de caos.</li>
-            <li><strong>Alimentos</strong><br />Sandwiches, toast, y los mejores postres.</li>
-            <li><strong>Merch</strong><br />Tazas, arte, gorras y piezas unicas para tu hogar.</li>
+            <li data-i18n="worlds.drinks"><strong>Bebidas</strong><br />Café, matcha, bebidas de temporada y alguna que otra bebida única de Caos.</li>
+            <li data-i18n="worlds.food"><strong>Alimentos</strong><br />Sandwiches, toast y los mejores postres.</li>
+            <li data-i18n="worlds.merch"><strong>Merch</strong><br />Tazas, gorras, stickers y vasitos.</li>
           </ul>
         </div>
       </div>
@@ -350,27 +181,27 @@
 
     <section class="section" id="sobre">
       <div class="container">
-        <span class="eyebrow reveal">Sobre nosotros</span>
-        <h2 class="section-title reveal">En el desorden también existe el orden.</h2>
+        <span class="eyebrow reveal" data-i18n="about.eyebrow">Sobre nosotros</span>
+        <h2 class="section-title reveal" data-i18n="about.title">En el desorden también existe el orden.</h2>
 
         <div class="about-grid">
           <div class="about-card reveal">
-            <p>
+            <p data-i18n="about.p1">
               Caos nace de la necesidad de un lugar de reunión donde se pueda ir a pasar el rato, trabajar sin tener que estar en casa o en la oficina, y encontrar un espacio tranquilo para relajarse y disfrutar de un buen café.
             </p>
-            <p>
+            <p data-i18n="about.p2">
               El nombre <strong>CAOS</strong> viene de la idea de que lo que aparenta ser negativo no siempre lo es. En el desorden existe el orden, y ser diferente no es malo: es parte de lo que nos vuelve mejores, únicos y humanos.
             </p>
-            <p>
+            <p data-i18n="about.p3">
               Creemos que el café no es solo una bebida, sino una herramienta o una excusa para reunir a la gente, hacer compañía y acompañar las actividades del día a día. Cuidamos la calidad del café y de nuestros alimentos para ofrecer la mejor experiencia posible.
             </p>
-            <p>
+            <p data-i18n="about.p4">
               El espacio está curado para sentirse bello, cómodo y vivo: un lugar en el que nosotros mismos quisiéramos pasar el rato y al que dan ganas de volver.
             </p>
           </div>
 
           <div class="about-image reveal">
-            <img src="img/e5.jpeg" alt="Espacio interior del café" />
+            <img src="img/e5.jpeg" alt="Espacio interior del café" data-i18n-attr="alt:about.imgAlt" />
           </div>
         </div>
       </div>
@@ -378,27 +209,24 @@
 
     <section class="section" id="visitanos">
       <div class="container">
-        <span class="eyebrow reveal">Visítanos</span>
-        <h2 class="section-title reveal">Pasa por café, quédate un rato.</h2>
+        <span class="eyebrow reveal" data-i18n="visit.eyebrow">Visítanos</span>
+        <h2 class="section-title reveal" data-i18n="visit.title">Pasa por café, quédate un rato.</h2>
 
         <div class="contact-grid">
           <div class="contact-card reveal">
-            <p class="section-intro">
-              Estamos en Plaza del Cabo, en San José del Cabo. Ven a trabajar, reunirte o simplemente bajar el ritmo.
-            </p>
+            <p class="section-intro" data-i18n="visit.intro">Estamos en Plaza del Cabo, en San José del Cabo. Ven a trabajar, reunirte o simplemente bajar el ritmo.</p>
 
             <div class="contact-list">
               <div class="contact-item">
-                <strong>Dirección</strong>
+                <strong data-i18n="visit.address">Dirección</strong>
                 Blvd Mauricio Castro, Pl. del Cabo 1952-Local 9, Campo de Golf Fonatur, 23405 San José del Cabo, B.C.S.
               </div>
               <div class="contact-item">
-                <strong>Horario</strong>
-                Lunes a viernes de 7:00 am a 6:30 pm<br />
-                Sábados de 8:00 am a 6:00 pm
+                <strong data-i18n="visit.hours">Horario</strong>
+                <span data-i18n="visit.hoursText">Lunes a viernes de 7:00 am a 6:30 pm<br />Sábados de 8:00 am a 6:00 pm</span>
               </div>
               <div class="contact-item">
-                <strong>Teléfono / WhatsApp</strong>
+                <strong data-i18n="visit.phone">Teléfono / WhatsApp</strong>
                 <a href="tel:+526242351886">624 235 1886</a>
               </div>
               <div class="contact-item">
@@ -415,24 +243,22 @@
                 href="https://maps.app.goo.gl/ELxwdEVexVzNKW5b9"
                 target="_blank"
                 rel="noopener noreferrer"
-              >
-                Cómo llegar
-              </a>
+                data-i18n="hero.directions"
+              >Cómo llegar</a>
               <a
                 class="btn btn-secondary"
                 href="https://wa.me/526242351886"
                 target="_blank"
                 rel="noopener noreferrer"
-              >
-                Escríbenos
-              </a>
+                data-i18n="visit.write"
+              >Escríbenos</a>
             </div>
           </div>
 
           <div class="map-card reveal">
             <div class="map-embed">
               <iframe
-                title="Mapa de Caos Café"
+                title="Mapa de Caos Café" data-i18n-attr="title:visit.mapTitle"
                 src="https://www.google.com/maps?q=Blvd%20Mauricio%20Castro,%20Pl.%20del%20Cabo%201952-Local%209,%20Campo%20de%20Golf%20Fonatur,%2023405%20San%20Jos%C3%A9%20del%20Cabo,%20B.C.S.&output=embed"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
@@ -449,7 +275,7 @@
       <div class="footer-card">
         <div>
           <strong>Caos Café</strong>
-          <p>Buen café, buena compañía y un lugar para quedarse.</p>
+          <p data-i18n="footer.tagline">Buen café, buena compañía y un lugar para quedarse.</p>
         </div>
         <div>
           <p>© 2026 Caos Café · San José del Cabo</p>
@@ -463,11 +289,13 @@
     href="https://wa.me/526242351886"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Abrir WhatsApp"
+    aria-label="Abrir WhatsApp" data-i18n-attr="aria-label:whatsapp.label"
   >
     ✆
   </a>
 
+  <script src="menu.js"></script>
+  <script src="i18n.js"></script>
   <script>
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
@@ -478,21 +306,6 @@
 
     navLinks?.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => navLinks.classList.remove("open"));
-    });
-
-    const tabButtons = document.querySelectorAll(".tab-btn");
-    const menuPanels = document.querySelectorAll(".menu-panel");
-
-    tabButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const target = button.dataset.tab;
-
-        tabButtons.forEach((btn) => btn.classList.remove("active"));
-        menuPanels.forEach((panel) => panel.classList.remove("active"));
-
-        button.classList.add("active");
-        document.getElementById(target).classList.add("active");
-      });
     });
 
     const track = document.getElementById("carouselTrack");
