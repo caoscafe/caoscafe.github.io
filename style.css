@@ -42,7 +42,7 @@ a {
 }
 
 .section {
-  padding: 48px 0;
+  padding: 24px 0;
 }
 
 .eyebrow {
@@ -422,7 +422,7 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 26px;
-  align-items: center;
+  align-items: start;
 }
 
 .carousel {
@@ -689,7 +689,7 @@ a {
   }
 
   .section {
-    padding: 40px 0;
+    padding: 20px 0;
   }
 
   .info-strip,
@@ -748,10 +748,11 @@ a {
 
 .lang-switch .lang-track {
   position: relative;
-  width: 40px;
-  height: 22px;
+  width: 46px;
+  height: 26px;
   border-radius: 999px;
   background: var(--olive);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.18);
   transition: background 0.2s ease;
 }
 
@@ -759,8 +760,8 @@ a {
   position: absolute;
   top: 3px;
   left: 3px;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--white);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
@@ -768,7 +769,7 @@ a {
 }
 
 .lang-switch[aria-checked="true"] .lang-knob {
-  transform: translateX(18px);
+  transform: translateX(20px);
 }
 
 .lang-switch:focus-visible {
@@ -778,7 +779,7 @@ a {
 }
 
 .menu-note {
-  margin-top: 18px;
+  margin: 12px 0 0;
   font-size: 0.85rem;
   opacity: 0.7;
 }
