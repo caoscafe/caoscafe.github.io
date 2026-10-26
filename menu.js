@@ -23,7 +23,7 @@ window.CAOS_MENU = [
         ],
       },
       {
-        title: { es: "Con leche", en: "With milk" },
+        title: { es: "Para el antojo", en: "Treat yourself" },
         items: [
           { name: "Mocha", price: "$95",
             desc: { es: "Espresso, leche y chocolate.", en: "Espresso, milk and chocolate." } },
