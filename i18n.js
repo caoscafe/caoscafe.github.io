@@ -136,8 +136,7 @@
 
     const btn = document.getElementById("langToggle");
     if (btn) {
-      btn.textContent = lang === "en" ? "ES" : "EN";
-      btn.setAttribute("aria-label", dict["lang.switchLabel"]);
+      btn.setAttribute("aria-checked", lang === "en" ? "true" : "false");
       btn.title = dict["lang.switchLabel"];
     }
     if (window.renderCaosMenu) window.renderCaosMenu(lang);

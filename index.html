@@ -32,7 +32,11 @@
       </a>
 
       <div class="nav-actions">
-        <button class="lang-toggle" id="langToggle" type="button" aria-label="View in English" title="View in English">EN</button>
+        <button class="lang-switch" id="langToggle" type="button" role="switch" aria-checked="false" aria-label="English">
+          <span class="lang-label lang-es">ES</span>
+          <span class="lang-track" aria-hidden="true"><span class="lang-knob"></span></span>
+          <span class="lang-label lang-en">EN</span>
+        </button>
         <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" data-i18n="nav.toggle" data-i18n-attr="aria-label:nav.toggleLabel">Menú</button>
       </div>
 
